@@ -1,0 +1,347 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "7696627e78f021ebd79ee50d16eb0ba9",
+    "entities": [
+      {
+        "tableName": "communities",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id_Communities` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `namecomunities` TEXT, `photocomunities` INTEGER NOT NULL, `coordinador` TEXT, `tematica` TEXT, `descripcion` TEXT, `email` TEXT, `datos` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id_Communities",
+            "columnName": "id_Communities",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "namecomunities",
+            "columnName": "namecomunities",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "photocomunities",
+            "columnName": "photocomunities",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "coordinador",
+            "columnName": "coordinador",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "tematica",
+            "columnName": "tematica",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "descripcion",
+            "columnName": "descripcion",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "email",
+            "columnName": "email",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "datos",
+            "columnName": "datos",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id_Communities"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "lesson",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `img` INTEGER NOT NULL, `descripcion` TEXT, `curseYear` TEXT, `estadistic` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nameclass",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "photoclass",
+            "columnName": "img",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "descripcion",
+            "columnName": "descripcion",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "courseYear",
+            "columnName": "curseYear",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "estadistics",
+            "columnName": "estadistic",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "notes",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`date` TEXT, `classes` TEXT, `works` TEXT, `notes` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "classes",
+            "columnName": "classes",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "works",
+            "columnName": "works",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "notes",
+            "columnName": "notes",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "notifications",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`date` TEXT, `userName` TEXT, `title` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "userName",
+            "columnName": "userName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "teacher",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`nameteacher` TEXT, `surnameteacher` TEXT, `phototeacher` INTEGER NOT NULL, `subject` TEXT, `description` TEXT, `emailteacher` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "nameteacher",
+            "columnName": "nameteacher",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "surnameteacher",
+            "columnName": "surnameteacher",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "phototeacher",
+            "columnName": "phototeacher",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "subject",
+            "columnName": "subject",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "emailteacher",
+            "columnName": "emailteacher",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "User",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`str_img_user` TEXT, `str_gender` TEXT, `str_email` TEXT, `str_name` TEXT, `str_surname` TEXT, `str_second_surname` TEXT, `str_city` TEXT, `str_phone_type` TEXT, `str_address` TEXT, `str_phone` TEXT, `str_postal_code` TEXT, `str_description` TEXT, `str_first_hobbie` TEXT, `str_second_hobbie` TEXT, `str_third_hobbie` TEXT, `int_age` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "str_img_user",
+            "columnName": "str_img_user",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "str_gender",
+            "columnName": "str_gender",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "str_email",
+            "columnName": "str_email",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "str_name",
+            "columnName": "str_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "str_surname",
+            "columnName": "str_surname",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "str_second_surname",
+            "columnName": "str_second_surname",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "str_city",
+            "columnName": "str_city",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "str_phone_type",
+            "columnName": "str_phone_type",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "str_address",
+            "columnName": "str_address",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "str_phone",
+            "columnName": "str_phone",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "str_postal_code",
+            "columnName": "str_postal_code",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "str_description",
+            "columnName": "str_description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "str_first_hobbie",
+            "columnName": "str_first_hobbie",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "str_second_hobbie",
+            "columnName": "str_second_hobbie",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "str_third_hobbie",
+            "columnName": "str_third_hobbie",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "int_age",
+            "columnName": "int_age",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"7696627e78f021ebd79ee50d16eb0ba9\")"
+    ]
+  }
+}

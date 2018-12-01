@@ -1,0 +1,75 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "dba579b492b28de9f579cb866ba839ec",
+    "entities": [
+      {
+        "tableName": "communities",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id_Communities` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `namecomunities` TEXT, `photocomunities` INTEGER NOT NULL, `coordinador` TEXT, `tematica` TEXT, `descripcion` TEXT, `email` TEXT, `datos` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id_Communities",
+            "columnName": "id_Communities",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "namecomunities",
+            "columnName": "namecomunities",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "photocomunities",
+            "columnName": "photocomunities",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "coordinador",
+            "columnName": "coordinador",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "tematica",
+            "columnName": "tematica",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "descripcion",
+            "columnName": "descripcion",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "email",
+            "columnName": "email",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "datos",
+            "columnName": "datos",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id_Communities"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"dba579b492b28de9f579cb866ba839ec\")"
+    ]
+  }
+}
