@@ -101,7 +101,7 @@
             "notNull": false
           },
           {
-            "fieldPath": "estadistics",
+            "fieldPath": "estadisticas",
             "columnName": "estadistic",
             "affinity": "TEXT",
             "notNull": false

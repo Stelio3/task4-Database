@@ -3,8 +3,6 @@ package com.utad.david.task_3_fragments_lists.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.utad.david.task_3_fragments_lists.Adapter.NotesAdapter;
-import com.utad.david.task_3_fragments_lists.Model.Notes;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Notes;
 import com.utad.david.task_3_fragments_lists.R;
 
 public class NotesFragment extends Fragment {

@@ -4,10 +4,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.utad.david.task_3_fragments_lists.Model.Notes;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Notes;
 import com.utad.david.task_3_fragments_lists.R;
 
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHolder>  {

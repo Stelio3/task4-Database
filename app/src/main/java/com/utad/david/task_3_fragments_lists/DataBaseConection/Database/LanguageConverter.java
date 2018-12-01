@@ -1,15 +1,12 @@
-package com.utad.david.task_3_fragments_lists.Database;
+package com.utad.david.task_3_fragments_lists.DataBaseConection.Database;
 
 import android.arch.persistence.room.TypeConverter;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.utad.david.task_3_fragments_lists.Model.Communities;
 
 import java.lang.reflect.Type;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 
 public class LanguageConverter {
     @TypeConverter

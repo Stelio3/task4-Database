@@ -1,8 +1,6 @@
-package com.utad.david.task_3_fragments_lists.Model;
+package com.utad.david.task_3_fragments_lists.DataBaseConection.Model;
 
 import android.arch.persistence.room.Entity;
-import android.os.Parcel;
-import android.os.Parcelable;
 
 @Entity(tableName = "notifications")
 public class Notifications {

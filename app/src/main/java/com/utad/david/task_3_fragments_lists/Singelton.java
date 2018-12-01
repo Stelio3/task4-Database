@@ -1,6 +1,6 @@
 package com.utad.david.task_3_fragments_lists;
 
-import com.utad.david.task_3_fragments_lists.Model.User;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.User;
 
 public class Singelton {
 

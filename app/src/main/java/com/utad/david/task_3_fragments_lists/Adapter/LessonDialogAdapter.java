@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.utad.david.task_3_fragments_lists.Model.Lesson;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Lesson;
 import com.utad.david.task_3_fragments_lists.R;
 
 public class LessonDialogAdapter extends RecyclerView.Adapter<LessonDialogAdapter.LessonDialogHolderDialog> {

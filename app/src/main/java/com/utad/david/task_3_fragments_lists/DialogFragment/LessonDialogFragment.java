@@ -1,8 +1,6 @@
 package com.utad.david.task_3_fragments_lists.DialogFragment;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -14,8 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.utad.david.task_3_fragments_lists.Adapter.LessonDialogAdapter;
-import com.utad.david.task_3_fragments_lists.Model.Lesson;
-import com.utad.david.task_3_fragments_lists.Model.Teacher;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Lesson;
 import com.utad.david.task_3_fragments_lists.R;
 
 public class LessonDialogFragment extends DialogFragment {

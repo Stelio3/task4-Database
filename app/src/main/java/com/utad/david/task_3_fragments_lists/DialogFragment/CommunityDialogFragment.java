@@ -14,8 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.utad.david.task_3_fragments_lists.Adapter.CommunitiesDialogAdapter;
-import com.utad.david.task_3_fragments_lists.Adapter.TeacherDialogAdapter;
-import com.utad.david.task_3_fragments_lists.Model.Communities;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Communities;
 import com.utad.david.task_3_fragments_lists.R;
 
 public class CommunityDialogFragment extends DialogFragment {

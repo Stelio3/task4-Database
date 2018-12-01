@@ -8,19 +8,16 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.utad.david.task_3_fragments_lists.Adapter.LessonAdapter;
 import com.utad.david.task_3_fragments_lists.DialogFragment.LessonDialogFragment;
-import com.utad.david.task_3_fragments_lists.Model.Lesson;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Lesson;
 import com.utad.david.task_3_fragments_lists.R;
-import com.utad.david.task_3_fragments_lists.Repository.UtadRepository;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Repository.UtadRepository;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class LessonsFragment extends Fragment {

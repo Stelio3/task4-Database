@@ -2,7 +2,6 @@ package com.utad.david.task_3_fragments_lists.Fragment;
 
 import android.arch.lifecycle.Observer;
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,14 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.utad.david.task_3_fragments_lists.Adapter.CommunitiesAdapter;
-import com.utad.david.task_3_fragments_lists.Database.UtadDatabase;
 import com.utad.david.task_3_fragments_lists.DialogFragment.CommunityDialogFragment;
-import com.utad.david.task_3_fragments_lists.DialogFragment.TeacherDialogFragment;
-import com.utad.david.task_3_fragments_lists.Model.Communities;
-import com.utad.david.task_3_fragments_lists.Model.Lesson;
-import com.utad.david.task_3_fragments_lists.Model.Teacher;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Communities;
 import com.utad.david.task_3_fragments_lists.R;
-import com.utad.david.task_3_fragments_lists.Repository.UtadRepository;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Repository.UtadRepository;
 
 import java.util.List;
 

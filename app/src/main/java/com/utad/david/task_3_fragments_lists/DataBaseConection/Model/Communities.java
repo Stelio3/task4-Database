@@ -1,14 +1,12 @@
-package com.utad.david.task_3_fragments_lists.Model;
+package com.utad.david.task_3_fragments_lists.DataBaseConection.Model;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
-import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 @Entity(tableName = "communities")
@@ -72,6 +70,7 @@ public class Communities implements Parcelable {
             return new Communities[size];
         }
     };
+
 
     public String getNamecomunities() {
         return namecomunities;

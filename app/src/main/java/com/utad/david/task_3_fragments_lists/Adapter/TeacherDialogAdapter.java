@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.utad.david.task_3_fragments_lists.Model.Teacher;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Teacher;
 import com.utad.david.task_3_fragments_lists.R;
 
 public class TeacherDialogAdapter extends RecyclerView.Adapter<TeacherDialogAdapter.TeacherDialogHolderDialog> {

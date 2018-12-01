@@ -9,10 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.utad.david.task_3_fragments_lists.Adapter.NotesAdapter;
 import com.utad.david.task_3_fragments_lists.Adapter.NotificationsAdapter;
-import com.utad.david.task_3_fragments_lists.Model.Notes;
-import com.utad.david.task_3_fragments_lists.Model.Notifications;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Notifications;
 import com.utad.david.task_3_fragments_lists.R;
 
 public class NotificationFragment extends Fragment {

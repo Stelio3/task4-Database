@@ -6,7 +6,6 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -14,20 +13,17 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.utad.david.task_3_fragments_lists.Adapter.LessonAdapter;
 import com.utad.david.task_3_fragments_lists.Fragment.CommunitiesFragment;
 import com.utad.david.task_3_fragments_lists.Fragment.LessonsFragment;
 import com.utad.david.task_3_fragments_lists.Fragment.NotesFragment;
 import com.utad.david.task_3_fragments_lists.Fragment.NotificationFragment;
 import com.utad.david.task_3_fragments_lists.Fragment.TeachersFragment;
-import com.utad.david.task_3_fragments_lists.Model.Lesson;
 import com.utad.david.task_3_fragments_lists.R;
 import com.utad.david.task_3_fragments_lists.Singelton;
 
