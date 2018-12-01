@@ -26,16 +26,16 @@ public class TeacherDialogAdapter extends RecyclerView.Adapter<TeacherDialogAdap
     //Método que sirve para añadir las asignaturas a los diferentes teachers (La información de los profesores está en TeachersFreagment)
     @Override
     public void onBindViewHolder(TeacherDialogHolderDialog lessonViewHolder, int i) {
-        for (int j=0;j<teacher.getSubject().length;j++){
+        for (int j=0;j<teacher.getSubject().size();j++){
             switch (i) {
                 case 0:
-                    lessonViewHolder.item_teacher.setText(teacher.getSubject()[i]);
+                    lessonViewHolder.item_teacher.setText(teacher.getSubject().get(i));
                     break;
                 case 1:
-                    lessonViewHolder.item_teacher.setText(teacher.getSubject()[i]);
+                    lessonViewHolder.item_teacher.setText(teacher.getSubject().get(i));
                     break;
                 case 2:
-                    lessonViewHolder.item_teacher.setText(teacher.getSubject()[i]);
+                    lessonViewHolder.item_teacher.setText(teacher.getSubject().get(i));
             }
         }
     }
@@ -43,7 +43,7 @@ public class TeacherDialogAdapter extends RecyclerView.Adapter<TeacherDialogAdap
     //Devuelve la cantidad de asignaturas
     @Override
     public int getItemCount() {
-        return teacher.getSubject().length;
+        return teacher.getSubject().size();
     }
 
     //Esta clase es el ViewHolder del adapter, contiene la información de las celdas que se van a mostrar

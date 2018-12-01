@@ -9,11 +9,13 @@ import android.widget.TextView;
 import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Notes;
 import com.utad.david.task_3_fragments_lists.R;
 
+import java.util.List;
+
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHolder>  {
 
-    private Notes[] mDataset;
+    private List<Notes> mDataset;
 
-    public NotesAdapter(Notes[] myDataset) {
+    public NotesAdapter(List<Notes> myDataset) {
         this.mDataset = myDataset;
     }
 
@@ -26,7 +28,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
     //Método para pintar la información
     @Override
     public void onBindViewHolder(NotesViewHolder notesViewHolder, final int i) {
-        final Notes item = mDataset[i];
+        final Notes item = mDataset.get(i);
         notesViewHolder.tv_date_notes.setText(item.getDate());
         notesViewHolder.tv_classes_notes.setText(item.getClasses());
         notesViewHolder.tv_works_notes.setText(item.getWorks());
@@ -35,7 +37,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
 
     @Override
     public int getItemCount() {
-        return mDataset.length;
+        return mDataset.size();
     }
 
     //Esta clase es el ViewHolder del adapter, contiene la información de las celdas que se van a mostrar

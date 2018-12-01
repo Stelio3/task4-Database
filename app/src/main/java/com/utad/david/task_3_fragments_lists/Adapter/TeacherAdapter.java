@@ -10,18 +10,20 @@ import android.widget.TextView;
 import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Teacher;
 import com.utad.david.task_3_fragments_lists.R;
 
+import java.util.List;
+
 public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.TeacherViewHolder>  {
 
     private final TeacherAdapter.OnItemClickListener listener;
 
-    private Teacher[] mDataset;
+    private List<Teacher> mDataset;
 
     //Obtenemos información del item
     public interface OnItemClickListener {
         void onItemClick(Teacher item);
     }
 
-    public TeacherAdapter(Teacher[] myDataset, TeacherAdapter.OnItemClickListener listener) {
+    public TeacherAdapter(List<Teacher> myDataset, TeacherAdapter.OnItemClickListener listener) {
         this.mDataset = myDataset;
         this.listener = listener;
     }
@@ -34,7 +36,7 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.TeacherV
 
     @Override
     public void onBindViewHolder(TeacherViewHolder teacherViewHolder, int i) {
-        final Teacher item = mDataset[i];
+        final Teacher item = mDataset.get(i);
         teacherViewHolder.textView.setText(item.getNameteacher());
         teacherViewHolder.imageView.setImageResource(item.getPhototeacher());
         //Hacemos un onClickListener para la celda(itemView), y llamamos a nuestra interfaz
@@ -50,7 +52,7 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.TeacherV
 
     @Override
     public int getItemCount() {
-        return mDataset.length;
+        return mDataset.size();
     }
 
     //Esta clase es el ViewHolder del adapter, contiene la información de las celdas que se van a mostrar

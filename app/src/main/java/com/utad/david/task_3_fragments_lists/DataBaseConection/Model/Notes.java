@@ -1,13 +1,23 @@
 package com.utad.david.task_3_fragments_lists.DataBaseConection.Model;
 
+import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 @Entity(tableName = "notes")
 public class Notes{
-
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
+    @ColumnInfo(name = "idNotes")
+    private int idNotes;
+    @ColumnInfo(name = "date")
     private String date;
+    @ColumnInfo(name = "classes")
     private String classes;
+    @ColumnInfo(name = "works")
     private String works;
+    @ColumnInfo(name = "notes")
     private String notes;
 
     public Notes(String date, String classes, String works, String notes) {
@@ -15,6 +25,14 @@ public class Notes{
         this.classes = classes;
         this.works = works;
         this.notes = notes;
+    }
+
+    public int getIdNotes() {
+        return idNotes;
+    }
+
+    public void setIdNotes(@NonNull int idNotes) {
+        this.idNotes = idNotes;
     }
 
     public String getDate() {

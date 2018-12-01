@@ -1,8 +1,8 @@
 {
   "formatVersion": 1,
   "database": {
-    "version": 4,
-    "identityHash": "8cf05e50ee0d7d2e4ebdfcf53f722c29",
+    "version": 6,
+    "identityHash": "2e32aa9ff8fdc5777ebe935bf5a24c27",
     "entities": [
       {
         "tableName": "communities",
@@ -197,11 +197,67 @@
         },
         "indices": [],
         "foreignKeys": []
+      },
+      {
+        "tableName": "teacher",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nameteacher` TEXT, `surnameteacher` TEXT, `phototeacher` INTEGER NOT NULL, `subject` TEXT, `description` TEXT, `emailteacher` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id_teachers",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nameteacher",
+            "columnName": "nameteacher",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "surnameteacher",
+            "columnName": "surnameteacher",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "phototeacher",
+            "columnName": "phototeacher",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "subject",
+            "columnName": "subject",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "emailteacher",
+            "columnName": "emailteacher",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"8cf05e50ee0d7d2e4ebdfcf53f722c29\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"2e32aa9ff8fdc5777ebe935bf5a24c27\")"
     ]
   }
 }

@@ -1,7 +1,9 @@
 package com.utad.david.task_3_fragments_lists.Fragment;
 
+import android.arch.lifecycle.Observer;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,7 +13,10 @@ import android.view.ViewGroup;
 
 import com.utad.david.task_3_fragments_lists.Adapter.NotesAdapter;
 import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Notes;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Repository.UtadRepository;
 import com.utad.david.task_3_fragments_lists.R;
+
+import java.util.List;
 
 public class NotesFragment extends Fragment {
 
@@ -48,21 +53,14 @@ public class NotesFragment extends Fragment {
 
     //Configuramos el adapter
     public void configAdaparterNotes(){
-        mAdapter = new NotesAdapter(createData());
-        mRecyclerView.setAdapter(mAdapter);
-    }
-
-    public Notes[] createData() {
-        Notes notes1 = new Notes("2018/11/18", "Android", "Listas", "9");
-        Notes notes2 = new Notes("2018/11/09", "IOS", "Tablas", "8.5");
-        Notes notes3 = new Notes("2018/10/28", "Procesos", "Semáforos", "6.5");
-        Notes notes4 = new Notes("2018/10/19", "Ingles", "Reading", "7.5");
-        Notes notes5 = new Notes("2018/10/14", "Acceso a datos", "Hibernate", "10");
-        Notes notes6 = new Notes("2018/10/10", "Empresa", "Plan de empresa", "10");
-        Notes notes7 = new Notes("2018/09/28", "GG Empresarial", "Odoo", "6.5");
-
-        Notes[] data = {notes1,notes2,notes3,notes4,notes5,notes6,notes7};
-        return data;
+        final UtadRepository utadRepository = new UtadRepository(getActivity().getApplication());
+        utadRepository.getAllNotes().observe(this, new Observer<List<Notes>>() {
+            @Override
+            public void onChanged(@Nullable List<Notes> notes) {
+                mAdapter = new NotesAdapter(notes);
+                mRecyclerView.setAdapter(mAdapter);
+            }
+        });
     }
 
     @Override

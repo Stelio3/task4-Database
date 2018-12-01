@@ -1,22 +1,37 @@
 package com.utad.david.task_3_fragments_lists.DataBaseConection.Model;
 
 
+import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
+
+import java.util.HashMap;
 
 @Entity(tableName = "teacher")
 //Implementa parcelable para poder pasarle el objeto al Dialog
 public class Teacher implements Parcelable {
 
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
+    @ColumnInfo(name = "id")
+    public int id_teachers;
+    @ColumnInfo(name = "nameteacher")
     private String nameteacher;
+    @ColumnInfo(name = "surnameteacher")
     private String surnameteacher;
+    @ColumnInfo(name = "phototeacher")
     private int phototeacher;
-    private String [] subject;
+    @ColumnInfo(name = "subject")
+    private HashMap<Integer, String> subject;
+    @ColumnInfo(name = "description")
     private String description;
+    @ColumnInfo(name = "emailteacher")
     private String emailteacher;
 
-    public Teacher(String nameteacher, String surnameteacher, int phototeacher, String[] subject,String description,String emailteacher) {
+    public Teacher(String nameteacher, String surnameteacher, int phototeacher, HashMap<Integer, String> subject,String description,String emailteacher) {
         this.nameteacher = nameteacher;
         this.surnameteacher = surnameteacher;
         this.phototeacher = phototeacher;
@@ -27,10 +42,11 @@ public class Teacher implements Parcelable {
 
 
     protected Teacher(Parcel in) {
+        id_teachers = in.readInt();
         nameteacher = in.readString();
         surnameteacher = in.readString();
         phototeacher = in.readInt();
-        subject = in.createStringArray();
+        subject = (HashMap<Integer, String>) in.readSerializable();
         description = in.readString();
     }
 
@@ -45,6 +61,13 @@ public class Teacher implements Parcelable {
             return new Teacher[size];
         }
     };
+    public int getidTeacher() {
+        return id_teachers;
+    }
+
+    public void setidTeacher(int id_teachers) {
+        this.id_teachers = id_teachers;
+    }
 
     public String getNameteacher() {
         return nameteacher;
@@ -70,11 +93,11 @@ public class Teacher implements Parcelable {
         this.surnameteacher = surnameteacher;
     }
 
-    public String[] getSubject() {
+    public HashMap<Integer, String> getSubject() {
         return subject;
     }
 
-    public void setSubject(String[] subject) {
+    public void setSubject(HashMap<Integer, String> subject) {
         this.subject = subject;
     }
 
@@ -101,10 +124,11 @@ public class Teacher implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id_teachers);
         dest.writeString(nameteacher);
         dest.writeString(surnameteacher);
         dest.writeInt(phototeacher);
-        dest.writeStringArray(subject);
+        dest.writeSerializable(subject);
         dest.writeString(description);
         dest.writeString(emailteacher);
     }
