@@ -1,7 +1,9 @@
 package com.utad.david.task_3_fragments_lists.Fragment;
 
+import android.arch.lifecycle.Observer;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,7 +13,10 @@ import android.view.ViewGroup;
 
 import com.utad.david.task_3_fragments_lists.Adapter.NotificationsAdapter;
 import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Notifications;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Repository.UtadRepository;
 import com.utad.david.task_3_fragments_lists.R;
+
+import java.util.List;
 
 public class NotificationFragment extends Fragment {
 
@@ -47,18 +52,14 @@ public class NotificationFragment extends Fragment {
 
     //Configuramos el adapter
     public void configAdaparterNotifications(){
-        mAdapter = new NotificationsAdapter(createData());
-        mRecyclerView.setAdapter(mAdapter);
-    }
-
-    public Notifications[] createData() {
-        Notifications notifications1 = new Notifications("2018/08/28", "David", "New Note");
-        Notifications notifications2 = new Notifications("2018/09/06", "Pablo", "New Event");
-        Notifications notifications3 = new Notifications("2018/09/10", "Sebas", "New work");
-        Notifications notifications4 = new Notifications("2018/10/15", "Nacho", "New Note");
-
-        Notifications[] data = {notifications1,notifications2,notifications3,notifications4};
-        return data;
+        final UtadRepository utadRepository = new UtadRepository(getActivity().getApplication());
+        utadRepository.getAllNotifications().observe(this, new Observer<List<Notifications>>() {
+            @Override
+            public void onChanged(@Nullable List<Notifications> notifications) {
+                mAdapter = new NotificationsAdapter(notifications);
+                mRecyclerView.setAdapter(mAdapter);
+            }
+        });
     }
 
     @Override

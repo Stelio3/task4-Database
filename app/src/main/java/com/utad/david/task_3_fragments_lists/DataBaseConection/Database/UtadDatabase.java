@@ -9,10 +9,10 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
-import com.utad.david.task_3_fragments_lists.DataBaseConection.Dao.ILessonDao;
 import com.utad.david.task_3_fragments_lists.DataBaseConection.Dao.IUtadDao;
 import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Communities;
 import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Lesson;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Notifications;
 import com.utad.david.task_3_fragments_lists.R;
 
 import java.util.ArrayList;
@@ -21,11 +21,10 @@ import java.util.HashMap;
 import java.util.List;
 
 //Creación de Base de datos
-@Database(entities = {Communities.class, Lesson.class}, version = 2)
+@Database(entities = {Communities.class, Lesson.class, Notifications.class}, version = 4)
 @TypeConverters(LanguageConverter.class)
 public abstract class UtadDatabase extends RoomDatabase {
     public abstract IUtadDao utadDao();
-    public abstract ILessonDao lessonDA0();
     //Creación de la instancia estática
     public static UtadDatabase INSTANCE;
     //Creación del Singleton
@@ -36,7 +35,9 @@ public abstract class UtadDatabase extends RoomDatabase {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             UtadDatabase.class, "database_utad")
                             .fallbackToDestructiveMigration()
-                            .addCallback(callbackData)
+                            .addCallback(callbackDataCommunities)
+                            .addCallback(callBackDataLesson)
+                            .addCallback(callBackDataNotifications)
                             .build();
                 }
             }
@@ -44,7 +45,7 @@ public abstract class UtadDatabase extends RoomDatabase {
         return INSTANCE;
     }
     // Creación del callBack
-    static Callback callbackData = new Callback() {
+    static Callback callbackDataCommunities = new Callback() {
         @Override
         public void onOpen(@NonNull SupportSQLiteDatabase db) {
             super.onOpen(db);
@@ -56,6 +57,13 @@ public abstract class UtadDatabase extends RoomDatabase {
         public void onOpen(@NonNull SupportSQLiteDatabase db) {
             super.onOpen(db);
             (new LessonAsyncTask(INSTANCE)).execute();
+        }
+    };
+    static Callback callBackDataNotifications = new Callback() {
+        @Override
+        public void onOpen(@NonNull SupportSQLiteDatabase db) {
+            super.onOpen(db);
+            (new NotificationsAsyncTask(INSTANCE)).execute();
         }
     };
 
@@ -98,10 +106,10 @@ public abstract class UtadDatabase extends RoomDatabase {
             event4.put(3, "Hackaton");
             event4.put(4, "DatabaseApp");
             event4.put(5, "**");
-            Communities developers = new Communities("Desarrollo de Software",1, "Dani", "Android", "9:00-10:45", "2018", event1);
-            Communities segurity = new Communities("Ciberseguridad",2, "David", "Android", "9:00-10:45", "2018", event2);
-            Communities bigData = new Communities("BigData",3, "Pedro", "Procesos", "11:00-12:45", "2018", event3);
-            Communities virtualReality = new Communities("Realidad Virtual",4, "David", "Android", "9:00-10:45", "2018", event4);
+            Communities developers = new Communities("Desarrollo de Software", R.drawable.desarrollo_software, "Dani", "Android", "9:00-10:45", "2018", event1);
+            Communities segurity = new Communities("Ciberseguridad", R.drawable.ciberseguridad, "David", "Android", "9:00-10:45", "2018", event2);
+            Communities bigData = new Communities("BigData", R.drawable.big_data, "Pedro", "Procesos", "11:00-12:45", "2018", event3);
+            Communities virtualReality = new Communities("Realidad Virtual", R.drawable.vr, "David", "Android", "9:00-10:45", "2018", event4);
             List<Communities> data = new ArrayList<>();
             data.add(developers);
             data.add(segurity);
@@ -111,25 +119,12 @@ public abstract class UtadDatabase extends RoomDatabase {
             utadDao.insertAllComunities(data);
             return null;
         }
-        public void doNotifications(){
-            /*Notifications notifications1 = new Notifications("2018/08/28", "David", "New Note");
-            Notifications notifications2 = new Notifications("2018/09/06", "Pablo", "New Event");
-            Notifications notifications3 = new Notifications("2018/09/10", "Sebas", "New work");
-            Notifications notifications4 = new Notifications("2018/10/15", "Nacho", "New Note");
-            List<Notifications> data = new ArrayList<>();
-            data.add(notifications1);
-            data.add(notifications2);
-            data.add(notifications3);
-            data.add(notifications4);
-            utadDao.deleteAllNotifications();
-            utadDao.insertAllNotifications(data);*/
-        }
     }
     private static class LessonAsyncTask extends AsyncTask<Void,Void,Void> {
-        public ILessonDao lessonDAO;
+        public IUtadDao lessonDAO;
 
         public LessonAsyncTask(UtadDatabase bdUtad) {
-            lessonDAO = bdUtad.lessonDA0();
+            lessonDAO = bdUtad.utadDao();
         }
 
         @Override
@@ -197,5 +192,27 @@ public abstract class UtadDatabase extends RoomDatabase {
             return null;
         }
     }
+    private static class NotificationsAsyncTask extends AsyncTask<Void,Void,Void> {
+        public IUtadDao notificationsDAO;
 
+        public NotificationsAsyncTask(UtadDatabase bdUtad) {
+            notificationsDAO = bdUtad.utadDao();
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            Notifications notifications1 = new Notifications("2018/08/28", "David", "New Note");
+            Notifications notifications2 = new Notifications("2018/09/06", "Pablo", "New Event");
+            Notifications notifications3 = new Notifications("2018/09/10", "Sebas", "New work");
+            Notifications notifications4 = new Notifications("2018/10/15", "Nacho", "New Note");
+            List<Notifications> data = new ArrayList<>();
+            data.add(notifications1);
+            data.add(notifications2);
+            data.add(notifications3);
+            data.add(notifications4);
+            notificationsDAO.deleteAllNotifications();
+            notificationsDAO.insertAllNotifications(data);
+            return null;
+        }
+    }
 }

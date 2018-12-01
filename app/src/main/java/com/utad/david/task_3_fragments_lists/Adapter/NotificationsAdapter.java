@@ -9,11 +9,13 @@ import android.widget.TextView;
 import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Notifications;
 import com.utad.david.task_3_fragments_lists.R;
 
+import java.util.List;
+
 public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdapter.NotificationsViewHolder>  {
 
-    private Notifications[] mDataset;
+    private List<Notifications> mDataset;
 
-    public NotificationsAdapter(Notifications[] myDataset) {
+    public NotificationsAdapter(List<Notifications> myDataset) {
         this.mDataset = myDataset;
     }
 
@@ -26,7 +28,7 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
     //Método para pintar la información
     @Override
     public void onBindViewHolder(NotificationsViewHolder notificationsViewHolder, final int i) {
-        final Notifications item = mDataset[i];
+        final Notifications item = mDataset.get(i);
         notificationsViewHolder.tv_date_notifications.setText(item.getDate());
         notificationsViewHolder.tv_userName_notifications.setText(item.getUserName());
         notificationsViewHolder.tv_title_notifications.setText(item.getTitle());
@@ -34,7 +36,7 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
 
     @Override
     public int getItemCount() {
-        return mDataset.length;
+        return mDataset.size();
     }
 
     //Esta clase es el ViewHolder del adapter, contiene la información de las celdas que se van a mostrar

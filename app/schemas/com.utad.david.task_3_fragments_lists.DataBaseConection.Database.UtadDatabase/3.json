@@ -1,8 +1,8 @@
 {
   "formatVersion": 1,
   "database": {
-    "version": 2,
-    "identityHash": "c73a3a3249a3449fddd3e7d52076cf58",
+    "version": 3,
+    "identityHash": "ac3e7bf3f6bda17d415bc7b2444072d4",
     "entities": [
       {
         "tableName": "communities",
@@ -118,7 +118,7 @@
       },
       {
         "tableName": "notifications",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idNotifications` INTEGER NOT NULL, `date` TEXT, `userName` TEXT, `title` TEXT, PRIMARY KEY(`idNotifications`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idNotifications` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `date` TEXT, `userName` TEXT, `title` TEXT)",
         "fields": [
           {
             "fieldPath": "idNotifications",
@@ -149,7 +149,7 @@
           "columnNames": [
             "idNotifications"
           ],
-          "autoGenerate": false
+          "autoGenerate": true
         },
         "indices": [],
         "foreignKeys": []
@@ -157,7 +157,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"c73a3a3249a3449fddd3e7d52076cf58\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"ac3e7bf3f6bda17d415bc7b2444072d4\")"
     ]
   }
 }
