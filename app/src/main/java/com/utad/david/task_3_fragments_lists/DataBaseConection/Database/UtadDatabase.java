@@ -9,7 +9,11 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
-import com.utad.david.task_3_fragments_lists.DataBaseConection.Dao.IUtadDao;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Dao.ICommunitiesDao;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Dao.ILessonsDao;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Dao.INotesDao;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Dao.INotificationsDao;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Dao.ITeachersDao;
 import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Communities;
 import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Lesson;
 import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Notes;
@@ -26,7 +30,11 @@ import java.util.List;
 @Database(entities = {Communities.class, Lesson.class, Notifications.class, Notes.class, Teacher.class}, version = 6)
 @TypeConverters(LanguageConverter.class)
 public abstract class UtadDatabase extends RoomDatabase {
-    public abstract IUtadDao utadDao();
+    public abstract ICommunitiesDao communitiesDao();
+    public abstract ILessonsDao lessonsDao();
+    public abstract INotesDao notesDao();
+    public abstract INotificationsDao notificationsDao();
+    public abstract ITeachersDao teachersDao();
 
     //Creación de la instancia estática
     public static UtadDatabase INSTANCE;
@@ -90,10 +98,10 @@ public abstract class UtadDatabase extends RoomDatabase {
 
     private static class ClassAsynTask extends AsyncTask<Void, Void, Void> {
 
-        public IUtadDao utadDao;
+        public ICommunitiesDao communitiesDao;
 
         public ClassAsynTask(UtadDatabase instance) {
-            utadDao = instance.utadDao();
+            communitiesDao = instance.communitiesDao();
         }
 
         //Método para rellenar los campos de la tabla
@@ -136,17 +144,17 @@ public abstract class UtadDatabase extends RoomDatabase {
             data.add(segurity);
             data.add(bigData);
             data.add(virtualReality);
-            utadDao.deleteAllComunities();
-            utadDao.insertAllComunities(data);
+            communitiesDao.deleteAllComunities();
+            communitiesDao.insertAllComunities(data);
             return null;
         }
     }
 
     private static class LessonAsyncTask extends AsyncTask<Void, Void, Void> {
-        public IUtadDao lessonDAO;
+        public ILessonsDao lessonDAO;
 
         public LessonAsyncTask(UtadDatabase bdUtad) {
-            lessonDAO = bdUtad.utadDao();
+            lessonDAO = bdUtad.lessonsDao();
         }
 
         @Override
@@ -216,10 +224,10 @@ public abstract class UtadDatabase extends RoomDatabase {
     }
 
     private static class NotificationsAsyncTask extends AsyncTask<Void, Void, Void> {
-        public IUtadDao notificationsDAO;
+        public INotificationsDao notificationsDAO;
 
         public NotificationsAsyncTask(UtadDatabase bdUtad) {
-            notificationsDAO = bdUtad.utadDao();
+            notificationsDAO = bdUtad.notificationsDao();
         }
 
         @Override
@@ -240,10 +248,10 @@ public abstract class UtadDatabase extends RoomDatabase {
     }
 
     private static class NotesAsyncTask extends AsyncTask<Void, Void, Void> {
-        public IUtadDao notesDao;
+        public INotesDao notesDao;
 
         public NotesAsyncTask(UtadDatabase bdUtad) {
-            notesDao = bdUtad.utadDao();
+            notesDao = bdUtad.notesDao();
         }
 
         @Override
@@ -271,10 +279,10 @@ public abstract class UtadDatabase extends RoomDatabase {
 
     private static class TeachersAsynTask extends AsyncTask<Void, Void, Void> {
 
-        public IUtadDao teachersDao;
+        public ITeachersDao teachersDao;
 
         public TeachersAsynTask(UtadDatabase instance) {
-            teachersDao = instance.utadDao();
+            teachersDao = instance.teachersDao();
         }
 
         @Override
