@@ -13,10 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.utad.david.task_3_fragments_lists.Adapter.LessonAdapter;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Repository.LessonsRepository;
 import com.utad.david.task_3_fragments_lists.DialogFragment.LessonDialogFragment;
 import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Lesson;
 import com.utad.david.task_3_fragments_lists.R;
-import com.utad.david.task_3_fragments_lists.DataBaseConection.Repository.UtadRepository;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Repository.NotificationsRepository;
 
 import java.util.List;
 
@@ -52,7 +53,7 @@ public class LessonsFragment extends Fragment {
     }
     //Configuramos el adapter y añadimos el listener del onClick()
     public void configAdaparterLesson(){
-        final UtadRepository utadRepository = new UtadRepository(getActivity().getApplication());
+        final LessonsRepository utadRepository = new LessonsRepository(getActivity().getApplication());
         utadRepository.getAllLessons().observe(this, new Observer<List<Lesson>>() {
             @Override
             public void onChanged(@Nullable List<Lesson> lessons) {

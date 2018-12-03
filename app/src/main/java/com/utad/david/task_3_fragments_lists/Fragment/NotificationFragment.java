@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 
 import com.utad.david.task_3_fragments_lists.Adapter.NotificationsAdapter;
 import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Notifications;
-import com.utad.david.task_3_fragments_lists.DataBaseConection.Repository.UtadRepository;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Repository.NotificationsRepository;
 import com.utad.david.task_3_fragments_lists.R;
 
 import java.util.List;
@@ -52,7 +52,7 @@ public class NotificationFragment extends Fragment {
 
     //Configuramos el adapter
     public void configAdaparterNotifications(){
-        final UtadRepository utadRepository = new UtadRepository(getActivity().getApplication());
+        final NotificationsRepository utadRepository = new NotificationsRepository(getActivity().getApplication());
         utadRepository.getAllNotifications().observe(this, new Observer<List<Notifications>>() {
             @Override
             public void onChanged(@Nullable List<Notifications> notifications) {

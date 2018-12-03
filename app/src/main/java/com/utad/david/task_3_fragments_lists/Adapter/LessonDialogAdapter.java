@@ -8,6 +8,8 @@ import android.widget.TextView;
 import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Lesson;
 import com.utad.david.task_3_fragments_lists.R;
 
+import java.util.Map;
+
 public class LessonDialogAdapter extends RecyclerView.Adapter<LessonDialogAdapter.LessonDialogHolderDialog> {
     private Lesson lesson;
 
@@ -23,22 +25,22 @@ public class LessonDialogAdapter extends RecyclerView.Adapter<LessonDialogAdapte
     //Método que sirve para añadir los datos a las diferentes clases (La información de las clases está en LessonsFragment)
     @Override
     public void onBindViewHolder(LessonDialogHolderDialog lessonViewHolder, int i) {
-        for (int j=0;j<lesson.getEstadisticas().size();j++){
+        for (Map.Entry<Integer, String> valor : lesson.getEstadisticas().entrySet()){
             switch (i) {
                 case 0:
-                    lessonViewHolder.item_lesson.setText("Numero de alumnos: " +lesson.getEstadisticas().get(i));
+                    lessonViewHolder.item_lesson.setText("Numero de alumnos: " + lesson.getEstadisticas().get(i));
                     break;
                 case 1:
-                    lessonViewHolder.item_lesson.setText("Profesor: " +lesson.getEstadisticas().get(i));
+                    lessonViewHolder.item_lesson.setText("Profesor: " + lesson.getEstadisticas().get(i));
                     break;
                 case 2:
-                    lessonViewHolder.item_lesson.setText("Nota Media: "+lesson.getEstadisticas().get(i));
+                    lessonViewHolder.item_lesson.setText("Nota Media: " + lesson.getEstadisticas().get(i));
                     break;
                 case 3:
-                    lessonViewHolder.item_lesson.setText("Mi Nota Media: "+ lesson.getEstadisticas().get(i));
+                    lessonViewHolder.item_lesson.setText("Mi Nota Media: " + lesson.getEstadisticas().get(i));
                     break;
                 case 4:
-                    lessonViewHolder.item_lesson.setText("Ranking: "+lesson.getEstadisticas().get(i));
+                    lessonViewHolder.item_lesson.setText("Ranking: "+ lesson.getEstadisticas().get(i));
             }
         }
     }

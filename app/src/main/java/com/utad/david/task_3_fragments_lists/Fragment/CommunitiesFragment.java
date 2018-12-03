@@ -13,10 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.utad.david.task_3_fragments_lists.Adapter.CommunitiesAdapter;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Repository.CommunitiesRepository;
 import com.utad.david.task_3_fragments_lists.DialogFragment.CommunityDialogFragment;
 import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Communities;
 import com.utad.david.task_3_fragments_lists.R;
-import com.utad.david.task_3_fragments_lists.DataBaseConection.Repository.UtadRepository;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Repository.NotificationsRepository;
 
 import java.util.List;
 
@@ -52,7 +53,7 @@ public class CommunitiesFragment extends Fragment {
     }
     //Configuramos el adapter y añadimos el listener del onClick()
     public void configAdaparterCommunities(){
-        final UtadRepository utadRepository = new UtadRepository(getActivity().getApplication());
+        final CommunitiesRepository utadRepository = new CommunitiesRepository(getActivity().getApplication());
         utadRepository.getAllCommunities().observe(this, new Observer<List<Communities>>() {
             @Override
             public void onChanged(@Nullable List<Communities> communities) {

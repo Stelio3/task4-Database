@@ -9,6 +9,8 @@ import android.widget.TextView;
 import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Teacher;
 import com.utad.david.task_3_fragments_lists.R;
 
+import java.util.Map;
+
 public class TeacherDialogAdapter extends RecyclerView.Adapter<TeacherDialogAdapter.TeacherDialogHolderDialog> {
 
     private Teacher teacher;
@@ -26,7 +28,7 @@ public class TeacherDialogAdapter extends RecyclerView.Adapter<TeacherDialogAdap
     //Método que sirve para añadir las asignaturas a los diferentes teachers (La información de los profesores está en TeachersFreagment)
     @Override
     public void onBindViewHolder(TeacherDialogHolderDialog lessonViewHolder, int i) {
-        for (int j=0;j<teacher.getSubject().size();j++){
+        for (Map.Entry<Integer, String> valor : teacher.getSubject().entrySet()){
             switch (i) {
                 case 0:
                     lessonViewHolder.item_teacher.setText(teacher.getSubject().get(i));

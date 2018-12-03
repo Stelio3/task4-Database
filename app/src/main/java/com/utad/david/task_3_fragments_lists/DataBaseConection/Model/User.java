@@ -1,27 +1,74 @@
 package com.utad.david.task_3_fragments_lists.DataBaseConection.Model;
 
+import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
-@Entity(tableName = "User")
-
+@Entity(tableName = "user")
+//Modelo para los datos del usuario
 public class User {
 
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
+    public int id_User;
+
+    @ColumnInfo(name = "str_img_user")
     private String str_img_user;
+
+    @ColumnInfo(name = "str_gender")
     private String str_gender;
+
+    @ColumnInfo(name = "str_email")
     private String str_email;
+
+    @ColumnInfo(name = "str_name")
     private String str_name;
+
+    @ColumnInfo(name = "str_surname")
     private String str_surname;
+
+    @ColumnInfo(name = "str_second_surname")
     private String str_second_surname;
+
+    @ColumnInfo(name = "str_city")
     private String str_city;
+
+    @ColumnInfo(name = "str_phone_type")
     private String str_phone_type;
+
+    @ColumnInfo(name = "str_address")
     private String str_address;
+
+    @ColumnInfo(name = "str_phone")
     private String str_phone;
+
+    @ColumnInfo(name = "str_postal_code")
     private String str_postal_code;
+
+    @ColumnInfo(name = "str_description")
     private String str_description;
+
+    @ColumnInfo(name = "str_first_hobbie")
     private String str_first_hobbie;
+
+    @ColumnInfo(name = "str_second_hobbie")
     private String str_second_hobbie;
+
+    @ColumnInfo(name = "str_third_hobbie")
     private String str_third_hobbie;
+
+    @ColumnInfo(name = "int_age")
     private int int_age;
+
+    @NonNull
+    public int getId_User() {
+        return id_User;
+    }
+
+    public void setId_User(@NonNull int id_User) {
+        this.id_User = id_User;
+    }
 
     public String getStr_img_user() {
         return str_img_user;

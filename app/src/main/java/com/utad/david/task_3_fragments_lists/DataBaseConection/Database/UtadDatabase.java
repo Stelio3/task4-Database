@@ -14,11 +14,13 @@ import com.utad.david.task_3_fragments_lists.DataBaseConection.Dao.ILessonsDao;
 import com.utad.david.task_3_fragments_lists.DataBaseConection.Dao.INotesDao;
 import com.utad.david.task_3_fragments_lists.DataBaseConection.Dao.INotificationsDao;
 import com.utad.david.task_3_fragments_lists.DataBaseConection.Dao.ITeachersDao;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Dao.IUserDao;
 import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Communities;
 import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Lesson;
 import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Notes;
 import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Notifications;
 import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Teacher;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.User;
 import com.utad.david.task_3_fragments_lists.R;
 
 import java.util.ArrayList;
@@ -27,7 +29,7 @@ import java.util.HashMap;
 import java.util.List;
 
 //Creación de Base de datos
-@Database(entities = {Communities.class, Lesson.class, Notifications.class, Notes.class, Teacher.class}, version = 6)
+@Database(entities = {Communities.class, Lesson.class, Notifications.class, Notes.class, Teacher.class, User.class}, version = 7)
 @TypeConverters(LanguageConverter.class)
 public abstract class UtadDatabase extends RoomDatabase {
     public abstract ICommunitiesDao communitiesDao();
@@ -35,6 +37,7 @@ public abstract class UtadDatabase extends RoomDatabase {
     public abstract INotesDao notesDao();
     public abstract INotificationsDao notificationsDao();
     public abstract ITeachersDao teachersDao();
+    public abstract IUserDao userDao();
 
     //Creación de la instancia estática
     public static UtadDatabase INSTANCE;
@@ -96,6 +99,7 @@ public abstract class UtadDatabase extends RoomDatabase {
         }
     };
 
+    //Creacion de los Hilos para cada sección
     private static class ClassAsynTask extends AsyncTask<Void, Void, Void> {
 
         public ICommunitiesDao communitiesDao;
@@ -107,43 +111,47 @@ public abstract class UtadDatabase extends RoomDatabase {
         //Método para rellenar los campos de la tabla
         @Override
         protected Void doInBackground(Void... voids) {
-
+            //Uso HashMaps para meter los datos que van en la lista del scroll horizontal
             HashMap<Integer, String> event1 = new HashMap<Integer, String>();
-            event1.put(1, "19");
-            event1.put(2, "3");
+            event1.put(0, "19");
+            event1.put(1, "3");
             event1.put(2, "Programame");
             event1.put(3, "Android App");
             event1.put(4, "****");
 
             HashMap<Integer, String> event2 = new HashMap<Integer, String>();
-            event2.put(1, "32");
-            event2.put(2, "2");
-            event2.put(3, "SouthSummit");
-            event2.put(4, "IOS App");
-            event2.put(5, "*****");
+            event2.put(0, "32");
+            event2.put(1, "2");
+            event2.put(2, "SouthSummit");
+            event2.put(3, "IOS App");
+            event2.put(4, "*****");
 
             HashMap<Integer, String> event3 = new HashMap<Integer, String>();
-            event3.put(1, "26");
-            event3.put(2, "1");
-            event3.put(3, "CompanyDay");
-            event3.put(4, "WebApp");
-            event3.put(5, "***");
+            event3.put(0, "26");
+            event3.put(1, "1");
+            event3.put(2, "CompanyDay");
+            event3.put(3, "WebApp");
+            event3.put(4, "***");
 
             HashMap<Integer, String> event4 = new HashMap<Integer, String>();
-            event4.put(1, "14");
-            event4.put(2, "3");
-            event4.put(3, "Hackaton");
-            event4.put(4, "DatabaseApp");
-            event4.put(5, "**");
+            event4.put(0, "14");
+            event4.put(1, "3");
+            event4.put(2, "Hackaton");
+            event4.put(3, "DatabaseApp");
+            event4.put(4, "**");
+
+            //Introducimos los datos de cada Community
             Communities developers = new Communities("Desarrollo de Software", R.drawable.desarrollo_software, "Dani", "Android", "9:00-10:45", "2018", event1);
             Communities segurity = new Communities("Ciberseguridad", R.drawable.ciberseguridad, "David", "Android", "9:00-10:45", "2018", event2);
             Communities bigData = new Communities("BigData", R.drawable.big_data, "Pedro", "Procesos", "11:00-12:45", "2018", event3);
             Communities virtualReality = new Communities("Realidad Virtual", R.drawable.vr, "David", "Android", "9:00-10:45", "2018", event4);
+            //Metemos los datos introducidos anterior mente en una lista
             List<Communities> data = new ArrayList<>();
             data.add(developers);
             data.add(segurity);
             data.add(bigData);
             data.add(virtualReality);
+            //Querys para actualizar los datos guardados
             communitiesDao.deleteAllComunities();
             communitiesDao.insertAllComunities(data);
             return null;
@@ -160,53 +168,53 @@ public abstract class UtadDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids) {
             HashMap<Integer, String> stadistic1 = new HashMap<Integer, String>();
-            stadistic1.put(1, "25");
-            stadistic1.put(2, "David");
+            stadistic1.put(0, "25");
+            stadistic1.put(1, "David");
             stadistic1.put(2, "8.1");
             stadistic1.put(3, "9");
             stadistic1.put(4, "8");
 
             HashMap<Integer, String> estadisticas2 = new HashMap<Integer, String>();
-            estadisticas2.put(1, "32");
-            estadisticas2.put(2, "Meritxel");
-            estadisticas2.put(3, "SouthSummit");
-            estadisticas2.put(4, "IOS App");
-            estadisticas2.put(5, "*****");
+            estadisticas2.put(0, "32");
+            estadisticas2.put(1, "Meritxel");
+            estadisticas2.put(2, "SouthSummit");
+            estadisticas2.put(3, "IOS App");
+            estadisticas2.put(4, "*****");
 
             HashMap<Integer, String> estadisticas3 = new HashMap<Integer, String>();
-            estadisticas3.put(1, "26");
-            estadisticas3.put(2, "Laura");
-            estadisticas3.put(3, "CompanyDay");
-            estadisticas3.put(4, "WebApp");
-            estadisticas3.put(5, "***");
+            estadisticas3.put(0, "26");
+            estadisticas3.put(1, "Laura");
+            estadisticas3.put(2, "CompanyDay");
+            estadisticas3.put(3, "WebApp");
+            estadisticas3.put(4, "***");
 
             HashMap<Integer, String> estadisticas4 = new HashMap<Integer, String>();
-            estadisticas4.put(1, "14");
-            estadisticas4.put(2, "Pedro");
-            estadisticas4.put(3, "Hackaton");
-            estadisticas4.put(4, "DatabaseApp");
-            estadisticas4.put(5, "**");
+            estadisticas4.put(0, "14");
+            estadisticas4.put(1, "Pedro");
+            estadisticas4.put(2, "Hackaton");
+            estadisticas4.put(3, "DatabaseApp");
+            estadisticas4.put(4, "**");
 
             HashMap<Integer, String> estadisticas6 = new HashMap<Integer, String>();
-            estadisticas6.put(1, "14");
-            estadisticas6.put(2, "Jaime");
-            estadisticas6.put(3, "Hackaton");
-            estadisticas6.put(4, "DatabaseApp");
-            estadisticas6.put(5, "**");
+            estadisticas6.put(0, "14");
+            estadisticas6.put(1, "Jaime");
+            estadisticas6.put(2, "Hackaton");
+            estadisticas6.put(3, "DatabaseApp");
+            estadisticas6.put(4, "**");
 
             HashMap<Integer, String> estadisticas5 = new HashMap<Integer, String>();
-            estadisticas5.put(1, "14");
-            estadisticas5.put(2, "Cristina");
-            estadisticas5.put(3, "Hackaton");
-            estadisticas5.put(4, "DatabaseApp");
-            estadisticas5.put(5, "**");
+            estadisticas5.put(0, "14");
+            estadisticas5.put(1, "Cristina");
+            estadisticas5.put(2, "Hackaton");
+            estadisticas5.put(3, "DatabaseApp");
+            estadisticas5.put(4, "**");
 
             HashMap<Integer, String> estadisticas7 = new HashMap<Integer, String>();
-            estadisticas7.put(1, "14");
-            estadisticas7.put(2, "Carlos");
-            estadisticas7.put(3, "Hackaton");
-            estadisticas7.put(4, "DatabaseApp");
-            estadisticas7.put(5, "**");
+            estadisticas7.put(0, "14");
+            estadisticas7.put(1, "Carlos");
+            estadisticas7.put(2, "Hackaton");
+            estadisticas7.put(3, "DatabaseApp");
+            estadisticas7.put(4, "**");
 
             Lesson lesson1 = new Lesson("DINT", R.drawable.dint, "2018", "Desarrollo de interfaces", estadisticas7);
             Lesson lesson2 = new Lesson("EIEM", R.drawable.eiem, "2018", "Empresa e iniciativa emprendedora", stadistic1);
@@ -288,39 +296,39 @@ public abstract class UtadDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids) {
             HashMap<Integer, String> subject1 = new HashMap<Integer, String>();
-            subject1.put(1,"Acceso a datos");
-            subject1.put(2,"Base de datos");
-            subject1.put(3,"Lenguaje de marcas");
+            subject1.put(0,"Acceso a datos");
+            subject1.put(1,"Base de datos");
+            subject1.put(2,"Lenguaje de marcas");
 
             HashMap<Integer, String> subject2 = new HashMap<Integer, String>();
-            subject2.put(1,"Desarollo de interfaces");
-            subject2.put(2,"Programación");
-            subject2.put(3,"Sistemas Informaticos");
+            subject2.put(0,"Desarollo de interfaces");
+            subject2.put(1,"Programación");
+            subject2.put(2,"Sistemas Informaticos");
 
             HashMap<Integer, String> subject3 = new HashMap<Integer, String>();
-            subject3.put(1,"Ingles G.Superior");
-            subject3.put(2,"Ingles G.Medio");
-            subject3.put(3,"Ingles Bachillerato");
+            subject3.put(0,"Ingles G.Superior");
+            subject3.put(1,"Ingles G.Medio");
+            subject3.put(2,"Ingles Bachillerato");
 
             HashMap<Integer, String> subject4 = new HashMap<Integer, String>();
-            subject4.put(1,"Servicios y Procesos");
-            subject4.put(2,"Programación");
-            subject4.put(3,"Entornos del desarollo");
+            subject4.put(0,"Servicios y Procesos");
+            subject4.put(1,"Programación");
+            subject4.put(2,"Entornos del desarollo");
 
             HashMap<Integer, String> subject5 = new HashMap<Integer, String>();
-            subject5.put(1,"Empresa");
-            subject5.put(2,"Fol");
-            subject5.put(3,"Ingles");
+            subject5.put(0,"Empresa");
+            subject5.put(1,"Fol");
+            subject5.put(2,"Ingles");
 
             HashMap<Integer, String> subject6 = new HashMap<Integer, String>();
-            subject6.put(1,"S.G.Empresarial");
-            subject6.put(2,"Entornos del desarollo");
+            subject6.put(0,"S.G.Empresarial");
+            subject6.put(1,"Entornos del desarollo");
             subject6.put(3,"Programaciòn");
 
             HashMap<Integer, String> subject7 = new HashMap<Integer, String>();
-            subject7.put(1,"Ios");
-            subject7.put(2,"Programacion");
-            subject7.put(3,"Base de datos");
+            subject7.put(0,"Ios");
+            subject7.put(1,"Programacion");
+            subject7.put(2,"Base de datos");
 
             Teacher teacher1 = new Teacher("Jaime", "Latorre", R.drawable.jaime, subject1, "Experto en SQL", "jaime.latorre@utad.com");
             Teacher teacher2 = new Teacher("David", "Jardon", R.drawable.david, subject2, "Experto en Android", "david.jardon@utad.com");

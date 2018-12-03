@@ -13,7 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.utad.david.task_3_fragments_lists.Adapter.TeacherAdapter;
-import com.utad.david.task_3_fragments_lists.DataBaseConection.Repository.UtadRepository;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Repository.NotificationsRepository;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Repository.TeachersRepository;
 import com.utad.david.task_3_fragments_lists.DialogFragment.TeacherDialogFragment;
 import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Teacher;
 import com.utad.david.task_3_fragments_lists.R;
@@ -55,7 +56,7 @@ public class TeachersFragment extends Fragment {
 
     //Configuramos el adapter y añadimos el listener del onClick()
     public void configAdaparterTeacher(){
-        final UtadRepository utadRepository = new UtadRepository(getActivity().getApplication());
+        final TeachersRepository utadRepository = new TeachersRepository(getActivity().getApplication());
         utadRepository.getAllTeachers().observe(this, new Observer<List<Teacher>>() {
             @Override
             public void onChanged(@Nullable List<Teacher> teachers) {

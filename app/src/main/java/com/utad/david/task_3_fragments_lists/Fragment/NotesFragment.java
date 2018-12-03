@@ -13,7 +13,8 @@ import android.view.ViewGroup;
 
 import com.utad.david.task_3_fragments_lists.Adapter.NotesAdapter;
 import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Notes;
-import com.utad.david.task_3_fragments_lists.DataBaseConection.Repository.UtadRepository;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Repository.NotesRepository;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Repository.NotificationsRepository;
 import com.utad.david.task_3_fragments_lists.R;
 
 import java.util.List;
@@ -53,7 +54,7 @@ public class NotesFragment extends Fragment {
 
     //Configuramos el adapter
     public void configAdaparterNotes(){
-        final UtadRepository utadRepository = new UtadRepository(getActivity().getApplication());
+        final NotesRepository utadRepository = new NotesRepository(getActivity().getApplication());
         utadRepository.getAllNotes().observe(this, new Observer<List<Notes>>() {
             @Override
             public void onChanged(@Nullable List<Notes> notes) {

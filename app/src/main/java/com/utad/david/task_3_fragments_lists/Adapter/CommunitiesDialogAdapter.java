@@ -9,6 +9,8 @@ import android.widget.TextView;
 import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.Communities;
 import com.utad.david.task_3_fragments_lists.R;
 
+import java.util.Map;
+
 public class CommunitiesDialogAdapter extends RecyclerView.Adapter<CommunitiesDialogAdapter.CommunitiesDialogHolderDialog> {
     private Communities communities;
 
@@ -26,22 +28,22 @@ public class CommunitiesDialogAdapter extends RecyclerView.Adapter<CommunitiesDi
     //Método que sirve para añadir los datos a las diferentes communities (La información de las communities está en CommunitiesFreagment)
     @Override
     public void onBindViewHolder(CommunitiesDialogHolderDialog CommunitiesViewHolder, int i) {
-        for (int j = 0; j < communities.getDatos().size(); j++) {
+        for (Map.Entry<Integer, String> valor : communities.getDatos().entrySet()) {
             switch (i) {
                 case 0:
-                    CommunitiesViewHolder.item_communities.setText("Número de alumnos: "+communities.getDatos().get(i));
+                    CommunitiesViewHolder.item_communities.setText("Número de alumnos: " + communities.getDatos().get(i));
                     break;
                 case 1:
-                    CommunitiesViewHolder.item_communities.setText("Número de aulas: "+communities.getDatos().get(i));
+                    CommunitiesViewHolder.item_communities.setText("Número de aulas: " + communities.getDatos().get(i));
                     break;
                 case 2:
-                    CommunitiesViewHolder.item_communities.setText("Evento: "+communities.getDatos().get(i));
+                    CommunitiesViewHolder.item_communities.setText("Evento: " + communities.getDatos().get(i));
                     break;
                 case 3:
-                    CommunitiesViewHolder.item_communities.setText("Proyecto: "+communities.getDatos().get(i));
+                    CommunitiesViewHolder.item_communities.setText("Proyecto: " + communities.getDatos().get(i));
                     break;
                 case 4:
-                    CommunitiesViewHolder.item_communities.setText("Valoración: "+communities.getDatos().get(i));
+                    CommunitiesViewHolder.item_communities.setText("Valoración: " + communities.getDatos().get(i));
             }
         }
     }
