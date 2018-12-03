@@ -4,6 +4,7 @@ import android.app.Application;
 import android.arch.lifecycle.LiveData;
 
 import com.utad.david.task_3_fragments_lists.DataBaseConection.Dao.IUserDao;
+import com.utad.david.task_3_fragments_lists.DataBaseConection.Database.UtadDatabase;
 import com.utad.david.task_3_fragments_lists.DataBaseConection.Model.User;
 
 import java.util.List;
@@ -14,6 +15,9 @@ public class UserRepository {
     private LiveData<List<User>> mUser;
 
     public UserRepository(Application application) {
+        UtadDatabase db = UtadDatabase.getDatabase(application);
+        userDao = db.userDao();
+        mUser = userDao.getAllUsers();
     }
     public LiveData<List<User>> getAllUsers() {
         return mUser;

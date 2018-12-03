@@ -15,10 +15,10 @@ import java.util.List;
 public interface IUserDao {
     //Querys de Communities
     @Insert
-    void insertAllUsers(List<User> clases);
+    void insertUsers(User users);
 
     @Delete
-    void deleteUser(User clases);
+    void deleteUser(User users);
 
     @Query("DELETE FROM user")
     void deleteAllUsers();
